@@ -1,65 +1,36 @@
 import React, { Component } from 'react';
 import {
-  Animated,
   BackHandler,
   View,
   Image,
-  TouchableHighlight,
   Text,
   StyleSheet,
   TouchableOpacity,
-  Switch,
   Platform,
-  StatusBar,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { isIphoneX } from 'react-native-iphone-x-helper';
-import Colors from '../../../global/Colors';
 import Dimens from '../../../global/Dimens';
 import Images from '../../../global/Images';
 import { connect } from 'react-redux';
 import Themes from '../../../global/Themes';
-import { THEME_DARK_TOGGLE, THEME_LIGHT_TOGGLE } from '../../../actions/type';
+import ThemedView from '../../../components/ThemedView';
 
 class MenuScreen extends Component {
   static propTypes = {
     navigation: PropTypes.object.isRequired,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      animatedValue: new Animated.Value(0),
-      interpolateColor: null,
-    };
-  }
-
-  componentDidMount() {
-    const { theme } = this.props;
-    this.interpolateColor = this.state.animatedValue.interpolate({
-      inputRange: [0, 300],
-      outputRange: [
-        Themes[theme].backgroundColor,
-        theme === 'dark'
-          ? Themes.light.backgroundColor
-          : Themes.dark.backgroundColor,
-      ],
-    });
-  }
-
-  _onToggleTheme = () => {
-    this.props.dispatch({
-      type:
-        this.props.theme === 'light' ? THEME_DARK_TOGGLE : THEME_LIGHT_TOGGLE,
-    });
-    Animated.timing(this.state.animatedValue, {
-      toValue: this.state.animatedValue._value === 300 ? 0 : 300,
-      duration: 1000,
-    }).start();
+  _onPressStart = () => {
+    this.props.navigation.navigate('MainScreen');
   };
 
-  _onPressStart = () => {
-    this.props.navigation.push('MainScreen');
+  _onPressOptions = () => {
+    this.props.navigation.navigate('OptionsScreen');
+  };
+
+  _onPressHistory = () => {
+    this.props.navigation.navigate('HistoryScreen');
   };
 
   _onPressExit = () => {
@@ -67,44 +38,31 @@ class MenuScreen extends Component {
   };
 
   render() {
-    const { theme } = this.props;
+    const { navigation, theme, dispatch } = this.props;
     return (
-      <Animated.View
-        style={[
-          styles.root,
-          {
-            backgroundColor: this.interpolateColor
-              ? this.interpolateColor
-              : Themes[theme].backgroundColor,
-          },
-        ]}>
-        <StatusBar
-          barStyle={theme === 'dark' ? 'light-content' : 'dark-content'}
-          backgroundColor={Themes[theme].backgroundColor}
-        />
-        <Switch
-          style={styles.switch}
-          value={theme === 'dark'}
-          onValueChange={this._onToggleTheme}
-          ios_backgroundColor={Colors.primary}
-          trackColor={{
-            false: Colors.lightColor,
-            true: Colors.darkColor,
-          }}
-          thumbColor={Colors.primary}
-        />
+      <ThemedView
+        showThemeSwitch
+        theme={theme}
+        dispatch={dispatch}
+        style={styles.root}
+        navigation={navigation}>
         <Image source={Images.logo} resizeMode="contain" style={styles.logo} />
         <TouchableOpacity style={styles.button} onPress={this._onPressStart}>
           <Text style={styles.buttonText(theme)}>Start Game</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={this._onPressOptions}>
           <Text style={styles.buttonText(theme)}>Options</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={this._onPressExit}>
-          <Text style={styles.buttonText(theme)}>Exit</Text>
+        <TouchableOpacity style={styles.button} onPress={this._onPressHistory}>
+          <Text style={styles.buttonText(theme)}>History</Text>
         </TouchableOpacity>
+        {Platform.OS === 'android' && (
+          <TouchableOpacity style={styles.button} onPress={this._onPressExit}>
+            <Text style={styles.buttonText(theme)}>Exit</Text>
+          </TouchableOpacity>
+        )}
         <View style={styles.logo} />
-      </Animated.View>
+      </ThemedView>
     );
   }
 }

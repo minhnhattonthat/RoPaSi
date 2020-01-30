@@ -1,4 +1,4 @@
-# RoPaSi - Rock Paper Scissor game written with React Native
+# RoPaSi - Rock Paper Scissors game written with React Native
 
 ## Build
 

@@ -1,5 +1,5 @@
 export const ELEMENT = {
-  SCISSOR: 'scissor',
+  SCISSORS: 'scissors',
   PAPER: 'paper',
   ROCK: 'rock',
   LIZARD: 'lizard',
@@ -7,7 +7,7 @@ export const ELEMENT = {
 };
 
 export const ELEMENT_SET = [
-  ELEMENT.SCISSOR,
+  ELEMENT.SCISSORS,
   ELEMENT.PAPER,
   ELEMENT.ROCK,
   ELEMENT.LIZARD,

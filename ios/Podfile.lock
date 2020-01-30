@@ -221,9 +221,13 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
     - ReactCommon/jscallinvoker (= 0.61.5)
+  - ReactNativeART (1.1.2):
+    - React
   - RNCAsyncStorage (1.7.1):
     - React
   - RNCMaskedView (0.1.6):
+    - React
+  - RNExitApp (1.1.0):
     - React
   - RNGestureHandler (1.5.3):
     - React
@@ -263,8 +267,10 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/jscallinvoker (from `../node_modules/react-native/ReactCommon`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - "ReactNativeART (from `../node_modules/@react-native-community/art`)"
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
+  - RNExitApp (from `../node_modules/react-native-exit-app`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -327,10 +333,14 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  ReactNativeART:
+    :path: "../node_modules/@react-native-community/art"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-community/async-storage"
   RNCMaskedView:
     :path: "../node_modules/@react-native-community/masked-view"
+  RNExitApp:
+    :path: "../node_modules/react-native-exit-app"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNReanimated:
@@ -368,13 +378,15 @@ SPEC CHECKSUMS:
   React-RCTText: 3f24042210886ee8c02613758013010be04b291e
   React-RCTVibration: d55e1365be416980217914fe009e9d55dec02e03
   ReactCommon: eb96b70a2a5bed775e919151fd77699fed52944c
+  ReactNativeART: d504380c4733553593ebf46ecec0c5d2fa48eaec
   RNCAsyncStorage: e99188b8a89ea0edddc82d8831cd5142f4550fdc
   RNCMaskedView: 13dedff7c0722ffbb7349c489705be7eba428711
+  RNExitApp: be4c7d38cc1516a94d33e35cb8a446506ba8d8b6
   RNGestureHandler: 123c4bb46136077e390cc308a432029a1c1f47e5
   RNReanimated: e0bb8012c83f3d28794c62bf3ad6c4b2d182a915
   RNScreens: cbad3ccd2798bd19cc9ca5070e95e31c950b50ac
   Yoga: 6af72bedeaea291a3a3717772d6d41836f23a1b9
 
-PODFILE CHECKSUM: b2865d08fbdf1400acae1b970335619686772ace
+PODFILE CHECKSUM: b8885f866d3e7fab564f479d7cf33dde9ac0ad94
 
 COCOAPODS: 1.5.3

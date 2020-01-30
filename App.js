@@ -4,14 +4,14 @@ import { Provider } from 'react-redux';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import SplashScreen from 'react-native-splash-screen';
 import Navigation from './app/Router';
-import store from './app/store';
+import { store, persistor } from './app/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const prefix = Platform.OS === 'android' ? 'ropasi://ropasi/' : 'ropasi://';
 
 export default class App extends PureComponent {
   componentDidMount() {
     setTimeout(() => {
-      // LocationStore.startWatch();
       SplashScreen.hide();
     }, 500);
   }
@@ -20,7 +20,9 @@ export default class App extends PureComponent {
     return (
       <SafeAreaProvider>
         <Provider store={store}>
-          <Navigation uriPrefix={prefix} />
+          <PersistGate loading={null} persistor={persistor}>
+            <Navigation uriPrefix={prefix} />
+          </PersistGate>
         </Provider>
       </SafeAreaProvider>
     );

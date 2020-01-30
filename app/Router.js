@@ -5,6 +5,8 @@ import {
 } from 'react-navigation-stack';
 import MainScreen from './modules/main/screen/MainScreen';
 import MenuScreen from './modules/menu/screen/MenuScreen';
+import HistoryScreen from './modules/history/screen/HistoryScreen';
+import OptionsScreen from './modules/options/screen/OptionsScreen';
 
 const RootStack = createStackNavigator(
   {
@@ -13,6 +15,17 @@ const RootStack = createStackNavigator(
     },
     MainScreen: {
       screen: MainScreen,
+    },
+    OptionsScreen: {
+      screen: OptionsScreen,
+      headerMode: 'screen',
+      navigationOptions: {
+        headerShown: true,
+        headerTransparent: true,
+      },
+    },
+    HistoryScreen: {
+      screen: HistoryScreen,
     },
   },
   {
@@ -23,11 +36,8 @@ const RootStack = createStackNavigator(
       gestureEnabled: true,
       cardOverlayEnabled: true,
       ...TransitionPresets.SlideFromRightIOS,
+      // ...TransitionPresets.ScaleFromCenterAndroid,
     },
-    // navigationOptions: {
-    //   headerShown: false,
-    //   headerTransparent: true,
-    // },
   },
 );
 
