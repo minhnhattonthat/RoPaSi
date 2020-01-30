@@ -35,3 +35,9 @@ Run on Android
 ```bash
 npx react-native run-android
 ```
+
+## Testing
+
+```bash
+yarn run test
+```
