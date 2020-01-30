@@ -107,7 +107,7 @@ class OptionsScreen extends PureComponent {
 
 const styles = StyleSheet.create({
   root: {
-    paddingTop: getStatusBarHeight(true),
+    paddingTop: Platform.OS === 'ios' ? getStatusBarHeight(true) : 0,
     flexDirection: 'column',
     // justifyContent: 'center',
     alignItems: 'center',

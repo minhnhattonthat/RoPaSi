@@ -125,12 +125,14 @@ export default class ThemedView extends PureComponent {
 const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',
-    top: Dimens.sm + getStatusBarHeight(true),
+    top:
+      Platform.OS === 'ios' ? Dimens.sm + getStatusBarHeight(true) : Dimens.sm,
     left: Dimens.sm,
   },
   switchContainer: {
     position: 'absolute',
-    top: Dimens.sm + getStatusBarHeight(true),
+    top:
+      Platform.OS === 'ios' ? Dimens.sm + getStatusBarHeight(true) : Dimens.sm,
     right: Dimens.sm,
     flexDirection: 'row',
     alignItems: 'center',

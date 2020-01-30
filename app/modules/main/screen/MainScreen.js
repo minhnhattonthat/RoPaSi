@@ -3,6 +3,7 @@ import {
   View,
   StyleSheet,
   Dimensions,
+  StatusBar,
   TouchableOpacity,
   Text,
   TouchableWithoutFeedback,
@@ -36,6 +37,11 @@ const RESULTS = {
 
 function wp(percentage) {
   const value = (percentage * SCREEN_WIDTH) / 100;
+  return Math.round(value);
+}
+
+function hp(percentage) {
+  const value = (percentage * SCREEN_HEIGHT) / 100;
   return Math.round(value);
 }
 
@@ -105,13 +111,18 @@ class MainScreen extends Component {
         navigation={navigation}
         style={styles.root}
         showBack>
+        <StatusBar
+          barStyle={theme === 'dark' ? 'light-content' : 'dark-content'}
+          backgroundColor={Themes[oppositeTheme].backgroundColor}
+        />
         <View
           style={[
             styles.field,
             { backgroundColor: Themes[oppositeTheme].backgroundColor },
           ]}>
           <HandCard element={player2} theme={oppositeTheme} />
-          <Text style={[styles.onScreenText(oppositeTheme), styles.opponentText]}>
+          <Text
+            style={[styles.onScreenText(oppositeTheme), styles.opponentText]}>
             Opponent
           </Text>
         </View>
@@ -128,7 +139,7 @@ class MainScreen extends Component {
               }
               itemStyle={{
                 width: wp(mode === GAME_MODE_3 ? 40 : 30),
-                height: wp(mode === GAME_MODE_3 ? 60 : 40),
+                height: hp(mode === GAME_MODE_3 ? 25 : 20),
               }}
               dataSource={this.state.elementSet}
               onItemPress={this._onPressElement}

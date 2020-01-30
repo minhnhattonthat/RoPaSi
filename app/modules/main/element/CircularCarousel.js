@@ -146,7 +146,7 @@ export default class CircularCarousel extends Component {
           <Image
             pointerEvents="none"
             style={imageStyle}
-            source={{ uri: data.url }}
+            source={Images[`${data}Hand`]}
             resizeMode="contain"
           />
         </View>

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 import ThemedView from '../../../components/ThemedView';
 import Pie from 'react-native-pie';
 import { connect } from 'react-redux';
@@ -73,7 +73,7 @@ class HistoryScreen extends PureComponent {
 
 const styles = StyleSheet.create({
   root: {
-    paddingTop: getStatusBarHeight(true),
+    paddingTop: Platform.OS === 'ios' ? getStatusBarHeight(true) : 0,
     flexDirection: 'column',
     alignItems: 'center',
     flex: 1,
